@@ -56,7 +56,7 @@ class Watcher {
 
 class MyVue {
   constructor(opts) {
-    this.el = opts.el;
+    this.el = window.document.querySelector(opts.el);
     this.data = opts.data;
     // 用来存储publisher的map数据结构
     this.publisherMap = {};
@@ -95,7 +95,7 @@ class MyVue {
    */
   parseDOM() {
     // 获取所有包含v-model属性的元素节点，并将伪数组转换成数组
-    const nodes = [...window.document.querySelectorAll('[v-model]')];
+    const nodes = [...this.el.querySelectorAll('[v-model]')];
     // 遍历这些元素节点
     nodes.forEach((node) => {
       // 获取v-model属性值
